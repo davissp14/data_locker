@@ -1,0 +1,91 @@
+/* This file is for your main application css. */
+html {
+  background-color: #2F353F;
+}
+
+  body {
+    background-color: #EBEEF0;
+    color: #797979;
+  }
+
+html, body {
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  background: #2F353F;
+  font-family: Helvetica,"helvetica-neue";
+  overflow-y: hidden;
+  /*background: linear-gradient(to bottom, #939393, #a8a8a8);*/
+}
+
+.container {
+  height: 100%;
+  background: white;
+  margin-left: auto;
+  margin-left: auto;
+  position: relative;
+}
+
+.items {
+  border-top: 1px solid #e4e4e4;
+  padding: 0 10px 10px 10px;
+}
+
+.item {
+  width: 100%;
+  line-height: 35px;
+  border-bottom: 1px solid #e4e4e4;
+}
+
+.item:hover {
+  background-color: #f6f6f6;
+}
+
+.item-favorite {
+  width: 150px;
+  padding-right: 5px;
+}
+
+.item-favorite span {
+  position: relative;
+  top: 3px;
+  font-size: 25px;
+	color: orange;
+	cursor: pointer;
+  opacity: 0.5;
+}
+
+.item-favorite span:hover:before {
+	content: "\2605";
+	position: absolute;
+	color: orange;
+}
+
+.item-favicon {
+  padding-right: 5px;
+}
+
+.item-favicon img {
+  height: 25px;
+  width: 25px;
+}
+
+.item-title {
+  font-size: 16px;
+}
+
+.item-title a {
+  text-decoration: none;
+}
+
+.item-label {
+  vertical-align: center;
+  margin-left: 5px;
+  font-size: 12px;
+  padding: 2px 4px;
+}
+
+.item-destroy {
+  float: right;
+}

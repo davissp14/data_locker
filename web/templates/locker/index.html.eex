@@ -1,0 +1,26 @@
+<h2>Listing lockers</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for locker <- @lockers do %>
+    <tr>
+      <td><%= locker.name %></td>
+
+      <td class="text-right">
+        <%= link "Show", to: locker_path(@conn, :show, locker), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: locker_path(@conn, :edit, locker), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: locker_path(@conn, :delete, locker), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link "New locker", to: locker_path(@conn, :new) %>

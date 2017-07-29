@@ -1,0 +1,6 @@
+<h2>New item</h2>
+
+<%= render "form.html", changeset: @changeset,
+                        action: locker_item_path(@conn, :create, @locker) %>
+
+<%#= link "Back", to: locker_path(@conn, @locker) %>
