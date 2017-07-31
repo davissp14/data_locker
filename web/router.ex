@@ -19,6 +19,7 @@ defmodule Datalocker.Router do
     resources "/", LockerController do
       resources "/items", ItemController
     end
+    post "/evaluate_link", LockerController, :evaluate_link
   end
 
   # Other scopes may use custom stacks.

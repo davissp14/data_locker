@@ -3,6 +3,7 @@ defmodule Datalocker.LockerController do
 
   alias Datalocker.Locker
   alias Datalocker.Item
+  alias Datalocker.Scrape
 
   def index(conn, _params) do
     lockers = Repo.all(Locker)
@@ -64,5 +65,10 @@ defmodule Datalocker.LockerController do
     conn
     |> put_flash(:info, "Locker deleted successfully.")
     |> redirect(to: locker_path(conn, :index))
+  end
+
+  def evaluate_link(conn, %{"url" => url}) do
+    conn
+    |> json Scrape.start(url)
   end
 end

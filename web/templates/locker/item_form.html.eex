@@ -1,0 +1,23 @@
+<div id="overlay-back"></div>
+  <div id="overlay">
+
+    <div class='item-form clearfix'>
+      <a id="exit-button" href="#" class="pull-right">Close</a>
+
+      <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#link-form">Link</a></li>
+        <li><a data-toggle="tab" href="#file-form">File</a></li>
+      </ul>
+      <br />
+
+      <div class="tab-content">
+        <div id="link-form" class="tab-pane fade-in active">
+          <%= render "forms/link_form.html", locker: @locker, conn: @conn, changeset: @changeset %>
+        </div>
+        <div id="image-form" class="tab-pane fade">
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

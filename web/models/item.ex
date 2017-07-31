@@ -4,6 +4,8 @@ defmodule Datalocker.Item do
   schema "items" do
     field :title, :string
     field :url, :string
+    field :favicon, :string
+    field :type, :string
 
     belongs_to :locker, DataLocker.Locker
 
@@ -15,7 +17,7 @@ defmodule Datalocker.Item do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:title, :url])
-    |> validate_required([:title, :url])
+    |> cast(params, [:title, :url, :favicon, :type])
+    |> validate_required([:title, :url, :type])
   end
 end

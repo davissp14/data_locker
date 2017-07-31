@@ -2,27 +2,10 @@
 
 
 <div class="items-container">
-<%= form_for @changeset, :create, [class: "form-inline"], fn f -> %>
-  <%= if @changeset.action do %>
-    <div class="alert alert-danger">
-      <p>Oops, something went wrong! Please check the errors below.</p>
-    </div>
-  <% end %>
+  <a id="some-button" href="#">click me</a>
 
-  <div class="form-group">
-    <%= text_input f, :url, class: "form-control", placeholder: "Copy and Paste URL" %>
-    <%= error_tag f, :url %>
-  </div>
+  <%= render "item_form.html", locker: @locker, conn: @conn, changeset: @changeset %>
 
-  <div class="form-group">
-    <%= text_input f, :title, class: "form-control", placeholder: "Title" %>
-    <%= error_tag f, :title %>
-  </div>
-
-  <div class="form-group">
-    <%= submit "Add Item", class: "btn btn-primary" %>
-  </div>
-<% end %>
   <!-- <%= link "Back", to: locker_path(@conn, :index) %>
   <%= link "Add Item", to: locker_item_path(@conn, :new, @locker) %> -->
   <div class="items">
@@ -32,13 +15,21 @@
 	        <span>&#9734;</span>
         </span>
         <span class="item-favicon">
-          <%= img_tag(favicon(item.url)) %>
+            <%= if item.type == "image" do %>
+              <%= img_tag("/images/image-favicon.png") %>
+            <% end %>
+            <%= if item.type == "document" do %>
+              <%= img_tag("/images/document-favicon.png") %>
+            <% end %>
+            <%= if item.type == "html" do %>
+              <%= img_tag(item.favicon) %>
+            <% end %>
         </span>
         <span class="item-title">
           <%= link item.title, to: item.url, target: "_new" %>
         </span>
-        <span class="label label-success item-label">
-          <%= link_category(item.url) %>
+        <span class="item-label">
+          (<%= item.type %>)
         </span>
         <span class="item-destroy">
           <%= link "Delete", to: locker_item_path(@conn, :delete, @locker, item), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>

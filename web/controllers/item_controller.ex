@@ -24,7 +24,9 @@ defmodule Datalocker.ItemController do
         |> put_flash(:info, "Item created successfully.")
         |> redirect(to: locker_path(conn, :show, locker_id))
       {:error, changeset} ->
-        render(conn, "new.html", changeset: changeset)
+        conn
+        |> put_flash(:error, "Error creating item..")
+        |> redirect(to: locker_path(conn, :show, locker_id))
     end
   end
 
@@ -33,10 +35,11 @@ defmodule Datalocker.ItemController do
     render(conn, "show.html", item: item)
   end
 
-  def edit(conn, %{"id" => id}) do
+  def edit(conn, %{"id" => id, "locker_id" => locker_id}) do
     item = Repo.get!(Item, id)
+    locker = Repo.get!(Locker, locker_id)
     changeset = Item.changeset(item)
-    render(conn, "edit.html", item: item, changeset: changeset)
+    render(conn, "edit.html", item: item, locker: locker, changeset: changeset)
   end
 
   def update(conn, %{"id" => id, "item" => item_params}) do
