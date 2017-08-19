@@ -1,9 +1,11 @@
-<h2><%= @locker.name %></h2>
+
+<div class="locker-header">
+  <h2><%= @locker.name %></h2>
+  <%= link "Add Link", to: "#", class: "btn-primary btn pull-right", id: "some-button" %>
+</div>
 
 
 <div class="items-container">
-  <a id="some-button" href="#">click me</a>
-
   <%= render "item_form.html", locker: @locker, conn: @conn, changeset: @changeset %>
 
   <!-- <%= link "Back", to: locker_path(@conn, :index) %>

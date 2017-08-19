@@ -1,0 +1,96 @@
+.items {
+  border-top: 1px solid #e4e4e4;
+}
+
+.item-form {
+  margin-top: 10px;
+  border-radius: 10px;
+  -moz-box-shadow: 0 0 10px 5px #888;
+  -webkit-box-shadow: 0 0 10px 5px#888;
+  box-shadow: 0 0 10px 5px #888;
+  background: white;
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+}
+
+.item {
+  width: 100%;
+  line-height: 35px;
+  border-bottom: 1px solid #e4e4e4;
+  padding: 0 10px 5px 10px;
+}
+
+.item:hover {
+  background-color: #f6f6f6;
+}
+
+.item-favorite {
+  width: 150px;
+  padding-right: 5px;
+}
+
+.item-favorite span {
+  position: relative;
+  top: 3px;
+  font-size: 25px;
+	color: orange;
+	cursor: pointer;
+  opacity: 0.5;
+}
+
+.item-favorite span:hover:before {
+	content: "\2605";
+	position: absolute;
+	color: orange;
+}
+
+.item-favicon {
+  padding-right: 5px;
+}
+
+.item-favicon img {
+  height: 28px;
+  width: 28px;
+}
+
+.item-title {
+  font-size: 16px;
+}
+
+.item-title a {
+  text-decoration: none;
+}
+
+.item-label {
+
+  font-size: 12px;
+  padding: 2px 4px;
+  font-style: italic;
+}
+
+.item-destroy {
+  float: right;
+}
+
+#item_url.pending:focus {
+  border-color: #66afe9;
+}
+
+#item_url.success:focus {
+  border-color: #00cc00;
+}
+
+#item_url.failure:focus {
+  border-color: #ff1919;
+}
+
+#item_title {
+  background-image: url("https://assets.mybalsamiq.com/static/favicon-8177de7c26c9a844d218345397173032.ico");
+  background-position: 4px 5px;
+  background-size: 23px 23px;
+  background-repeat: no-repeat;
+  padding-left: 33px;
+  font-size: 14px;
+}

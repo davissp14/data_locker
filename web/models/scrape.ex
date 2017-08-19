@@ -19,7 +19,6 @@ defmodule Datalocker.Scrape do
     end
   end
 
-
   def title(url) do
     body = HTTPoison.get!(url,[], [
       ssl: [ {:versions, [:'tlsv1.2']} ]
@@ -32,6 +31,19 @@ defmodule Datalocker.Scrape do
   end
 
   def favicon(url) do
+      result = HTTPoison.get!(hostname(url) <> "/favicon.ico",[], [
+        ssl: [ {:versions, [:'tlsv1.2']} ]
+      ]).headers
+    {_, length} = Enum.find(result, fn({k,_}) -> k == "Content-Length" end)
+
+    if String.to_integer(length) > 0 do
+      hostname(url) <> "/favicon.ico"
+    else
+      find_favicon(url)
+    end
+  end
+
+  defp find_favicon(url) do
     body = HTTPoison.get!(url,[], [
       ssl: [ {:versions, [:'tlsv1.2']} ]
     ]).body
@@ -43,13 +55,13 @@ defmodule Datalocker.Scrape do
           icon_path
         String.starts_with?(icon_path, "//") ->
           "http:" <> icon_path
-        String.strip(icon_path) != "" ->
+        String.trim(icon_path) != "" ->
           if String.starts_with?(icon_path, "/") do
             hostname(url) <> icon_path
           else
             hostname(url) <> "/" <> icon_path
           end
-        String.strip(icon_path) == "" ->
+        String.trim(icon_path) == "" ->
           ""
       end
     else
